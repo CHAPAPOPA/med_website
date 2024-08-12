@@ -1,0 +1,44 @@
+[
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$ZJNc3jYIVrLtcZb3u4Z5ML$GHUfWTWag7MzLT/x0in1Xh2B2+B/K2ZlR2y6/Iev228=",
+      "last_login": "2024-07-25T16:54:23.201",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-07-25T16:39:41.910",
+      "first_name": "Админка",
+      "last_name": "Админова",
+      "birthday": "2000-01-01",
+      "email": "admin@admin.com",
+      "telegram": "admin",
+      "phone": "88005553535",
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$7jBaUCWlzNMDMvhzi5phBl$T5TG0UecZ86NtcKmEPKKTEXZLnPekXuX10o/2jb4mnQ=",
+      "last_login": "2024-07-25T16:55:07.301",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-07-25T16:47:33.226",
+      "first_name": "Яков",
+      "last_name": "Мулявин",
+      "birthday": "2001-08-06",
+      "email": "yackow.muliawin2015@yandex.ru",
+      "telegram": null,
+      "phone": "+79924088749",
+      "avatar": "avatars/3173a8b3-f42f-4f85-93be-1c6552063d61.jpeg",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

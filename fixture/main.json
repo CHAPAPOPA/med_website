@@ -1,0 +1,46 @@
+[
+  {
+    "model": "main.speciality",
+    "pk": 1,
+    "fields": {
+      "title": "Эндокринолог",
+      "icon": "icons/endocr_SW7nCjp.png",
+      "description": "Эндокринолог"
+    }
+  },
+  {
+    "model": "main.doctor",
+    "pk": 1,
+    "fields": {
+      "first_name": "Александр",
+      "last_name": "Маков",
+      "photo": "person/1690340913_3-128.jpg",
+      "speciality": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "main.diagnostic",
+    "pk": 1,
+    "fields": {
+      "title": "Консультация врача эндокринолога",
+      "description": "Консультация врача эндокринолога",
+      "price": 1500,
+      "speciality": 1,
+      "doctor": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "main.appointment",
+    "pk": 1,
+    "fields": {
+      "user": 3,
+      "diagnostic": 1,
+      "doctor": 1,
+      "date": "2025-08-15T12:00:00"
+    }
+  }
+]

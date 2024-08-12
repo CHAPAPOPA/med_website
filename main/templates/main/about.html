@@ -1,0 +1,101 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load mediapath %}
+{% block content %}
+
+<style>
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    h3 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #343a40;
+    }
+
+    .review_text {
+        margin-bottom: 20px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .send_contact {
+        margin-top: 30px;
+        padding: 20px;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        background-color: #ffffff;
+    }
+
+    .send_contact .review_text {
+        font-size: 16px;
+        color: #6c757d;
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    input[type="submit"] {
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: #ffffff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="container">
+    <h3>ОБЩАЯ ИНФОРМАЦИЯ</h3>
+    <div class="review_text">
+        <p><strong>ООО "Med"</strong></p>
+        <p><strong>ИНН:</strong> 0105025965</p>
+        <p><strong>ОГРН:</strong> 1020100703842</p>
+        <p><strong>Юр. адрес:</strong> г. Санкт-Петербург, пр. Энергетиков, д. 13</p>
+        <p><strong>Единый телефон:</strong> +7 (863) 444 44 44</p>
+    </div>
+
+    <h3>Форма обратной связи</h3>
+
+    <div class="send_contact">
+        <div class="review_text">
+            Отправьте ваш отзыв либо вопрос через форму ниже
+        </div>
+        <form method="post" action="#" id="review">
+            {% csrf_token %}
+            <input type="text" name="review_name" placeholder="Ваше имя" required>
+            <input type="email" name="review_email" placeholder="Ваш email" required>
+            <textarea name="review_text" placeholder="Ваше сообщение" required></textarea>
+            <input type="submit" value="Отправить">
+        </form>
+    </div>
+</div>
+
+{% endblock %}
