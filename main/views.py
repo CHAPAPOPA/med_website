@@ -65,7 +65,7 @@ class AppointmentListView(ListView):
                 queryset = (
                     super()
                     .get_queryset()
-                    .filter(user=None, date__gte=current_datetime)
+                    .filter(user=user, date__gte=current_datetime)
                     .order_by("date", "diagnostic")
                 )
         else:  # для незарегистрированных пользователей

@@ -8,12 +8,12 @@
 
     <div class="nav-scroller py-1 mb-2">
         <a class="btn btn-success my-6" href="{% url 'main:appointments_archive' %}">Архив прошедших записей</a>
-        <a class="btn btn-success my-6" href="{% url 'main:appointments' %}">Записаться на прием</a>
+        <a class="btn btn-success my-6" href="{% url 'main:appointments' %}">Записаться на приём</a>
     </div>
     <div class="card mb-4 box-shadow">
     </div>
     <div class="col-12 text-center">
-        <a class="blog-header-logo text-dark" href="{% url 'main:index' %}">Мои записи на прием</a>
+        <a class="blog-header-logo text-dark" href="{% url 'main:index' %}">Мои записи на приём</a>
         <p></p>
     </div>
     <div class="row">
@@ -31,7 +31,7 @@
                             <h4>Врач: {{ object.doctor}}</h4>
                             <h4>Дата и время: {{ object.date }}</h4>
                             <button class="btn btn-lg btn-block btn-primary" type="submit"
-                                    formaction="{% url 'main:appointments_cancel' object.pk %}">Отменить прием
+                                    formaction="{% url 'main:appointments_cancel' object.pk %}">Отменить приём
                             </button>
                         </ul>
                     </div>
@@ -43,7 +43,7 @@
 
 </div>
 {% else %}
-<h3>Просмотр записей на прием к врачу доступен только авторизованным пользователям</h3>
+<h3>Просмотр записей на приём к врачу доступен только авторизованным пользователям</h3>
 <h4>Пожалуйста, авторизуйтесь!</h4>
 {% endif %}
 

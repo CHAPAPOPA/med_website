@@ -33,7 +33,7 @@
                         </ul>
                         {% if not user.is_staff %}
                         <button class="btn btn-lg btn-block btn-primary" type="submit"
-                                formaction="{% url 'main:appointments_add' object.pk %}">Записаться на прием
+                                formaction="{% url 'main:appointments_add' object.pk %}">Записаться на приём
                         </button>
                         {% endif %}
                     </div>
@@ -44,7 +44,7 @@
     </div>
 </div>
 {% else %}
-<h3>Просмотр записей на прием к врачу доступен только авторизованным пользователям</h3>
+<h3>Просмотр записей на приём к врачу доступен только авторизованным пользователям</h3>
 <h4>Пожалуйста, авторизуйтесь!</h4>
 {% endif %}
 
