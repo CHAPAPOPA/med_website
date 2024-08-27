@@ -1,8 +1,9 @@
+from django.core.exceptions import ValidationError
 from django.test import TestCase
 from django.utils import timezone
-from main.models import Speciality, Doctor, Diagnostic, Appointment, Feedback
+
+from main.models import Appointment, Diagnostic, Doctor, Feedback, Speciality
 from users.models import User
-from django.core.exceptions import ValidationError
 
 
 class SpecialityModelTest(TestCase):
@@ -12,8 +13,7 @@ class SpecialityModelTest(TestCase):
 
     def test_speciality_creation(self):
         speciality = Speciality.objects.create(
-            title="Кардиология",
-            description="Описание кардиологии"
+            title="Кардиология", description="Описание кардиологии"
         )
         self.assertEqual(speciality.title, "Кардиология")
         self.assertEqual(speciality.description, "Описание кардиологии")
@@ -36,7 +36,9 @@ class DoctorModelTest(TestCase):
 
 class AppointmentModelTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create(email="testuser@example.com", birthday="2000-01-01")
+        self.user = User.objects.create(
+            email="testuser@example.com", birthday="2000-01-01"
+        )
         self.speciality = Speciality.objects.create(title="Кардиология")
         self.doctor = Doctor.objects.create(first_name="Иван", last_name="Иванов")
         self.diagnostic = Diagnostic.objects.create(
@@ -51,7 +53,7 @@ class AppointmentModelTest(TestCase):
             user=self.user,
             diagnostic=self.diagnostic,
             doctor=self.doctor,
-            date=timezone.now() + timezone.timedelta(days=1)
+            date=timezone.now() + timezone.timedelta(days=1),
         )
         self.assertEqual(appointment.user, self.user)
         self.assertEqual(appointment.diagnostic, self.diagnostic)
@@ -62,7 +64,7 @@ class AppointmentModelTest(TestCase):
             user=self.user,
             diagnostic=self.diagnostic,
             doctor=self.doctor,
-            date=timezone.now() - timezone.timedelta(days=1)
+            date=timezone.now() - timezone.timedelta(days=1),
         )
         with self.assertRaises(ValidationError):
             appointment.clean_fields()
@@ -74,7 +76,7 @@ class FeedbackModelTest(TestCase):
             name="Тестовое имя",
             email="test@example.com",
             text="Тестовый отзыв",
-            date=timezone.now()
+            date=timezone.now(),
         )
         self.assertEqual(feedback.name, "Тестовое имя")
         self.assertEqual(feedback.email, "test@example.com")
