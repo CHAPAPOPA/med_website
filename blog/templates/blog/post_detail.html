@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+{% block content %}
+{% load static %}
+{% load mediapath %}
+
+<div class="col-12">
+    <div class="text-center container">
+        <div class="card shadow-sm" style="height: 24rem;">
+            <img src="{% mediapath object.image %}" class="card-img-top mb-3" alt="...">
+            <div class="card-body">
+                <h5 class="card-title mb-3">{{ object.title|title }}</h5>
+                <h6 class="card-subtitle mb-3 text-body-secondary">{{ object.slug }}</h6>
+                <p class="card-text">{{ object.description }}</p>
+                <div>
+                    <a href="{% url 'blog:blog' %}" type="button"
+                       class="btn btn-sm btn-outline-secondary mb-3">Назад к блогу</a>
+
+                    <div class="row mb-3">
+                        <a>
+                            <small class="text-body-secondary">Создано {{ object.created_at }}</small>
+                            <small class="text-body-secondary">Количество просмотров {{ object.views_count }}</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

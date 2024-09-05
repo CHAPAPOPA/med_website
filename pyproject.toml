@@ -7,7 +7,24 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+django = "^5.0.7"
+pillow = "^10.4.0"
+python-dotenv = "^1.0.1"
+psycopg2 = "^2.9.9"
+requests = "^2.32.3"
+psycopg2-binary = "^2.9.9"
+ipython = "^8.26.0"
+pytils = "^0.4.1"
+django-crispy-forms = "^2.3"
+pytz = "^2024.1"
+django-cors-headers = "^4.4.0"
+coverage = "^7.6.1"
 
+
+[tool.poetry.group.lint.dependencies]
+flake8 = "^7.1.0"
+black = "^24.4.2"
+isort = "^5.13.2"
 
 [build-system]
 requires = ["poetry-core"]

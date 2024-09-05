@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load mediapath %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="container marketing">
+
+    <div class="nav-scroller py-1 mb-2">
+        <a class="btn btn-success my-6" href="{% url 'main:user_appointments' %}">Мои текущие записи</a>
+        <a class="btn btn-success my-6" href="{% url 'main:appointments' %}">Записаться на приём</a>
+    </div>
+    <div class="card mb-4 box-shadow">
+    </div>
+    <div class="col-12 text-center">
+        <a class="blog-header-logo text-dark" href="{% url 'main:index' %}">Прошедшие записи на приём</a>
+        <p></p>
+    </div>
+    <div class="row">
+        {% for object in object_list %}
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">{{ object.diagnostic.title}}</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mt-3 mb-4">
+                    <h5>Стоимость: {{ object.diagnostic.price}} руб.</h5>
+                    <h5>Врач: {{ object.doctor}}</h5>
+                    <h5>Дата и время: {{ object.date }}</h5>
+                    {% if object.user %}
+                    {% if user.is_staff %}
+                    <h5>Пациент: {{ object.user }}</h5>
+                    {% endif %}
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+
+
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+<h3>Просмотр записей на прием к врачу доступен только авторизованным пользователям</h3>
+<h4>Пожалуйста, авторизуйтесь!</h4>
+{% endif %}
+
+{% endblock %}

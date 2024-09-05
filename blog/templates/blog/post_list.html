@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}
+{% block content %}
+{% load static %}
+{% load mediapath %}
+
+<div class="text-center container">
+    {% if user.is_staff %}
+    <a class="btn btn-primary" href="{% url 'blog:create' %}" type="button">Создать пост</a>
+    {% endif %}
+</div>
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="text-center container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for object in post_list %}
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+
+                    <img src="{% mediapath object.image %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ object.title }}</h5>
+                        <p class="card-text">{{ object.description|truncatechars:300 }}</p>
+                        {% if object.author %}
+                        <p class="card-text">Автор: {{ object.author }}</p>
+                        {% endif %}
+                        <p class="card-text">{{ object.created_at|date:"d M Y" }}</p>
+                    </div>
+
+                </div>
+                <div>
+                    <a href="{% url 'blog:view' object.pk %}" type="button"
+                       class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                    {% if user.is_staff %}
+                    <a href="{% url 'blog:edit' object.pk %}" type="button"
+                       class="btn btn-sm btn-outline-secondary">Редактировать</a>
+                    <a href="{% url 'blog:delete' object.pk %}" type="button"
+                       class="btn btn-sm btn-outline-secondary">Удалить</a>
+                    {% endif %}
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

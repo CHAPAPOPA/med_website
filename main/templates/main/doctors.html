@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load mediapath %}
+{% block content %}
+
+<div class="container marketing">
+    <div class="row">
+        {% for object in doctor_list %}
+        <div class="col-lg-4">
+            <img class="rounded-circle"
+                 src="{% mediapath object.photo %}"
+                 alt="Generic placeholder image"
+                 width="140" height="140">
+            <h2>{{ object.first_name}} {{ object.last_name}}</h2>
+            {% for spec in object.speciality.all %}
+            <h4>{{ spec.title }}</h4>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

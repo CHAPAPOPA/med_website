@@ -1,0 +1,51 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load mediapath %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="container marketing">
+
+    <div class="nav-scroller py-1 mb-2">
+        <a class="btn btn-success my-6" href="{% url 'main:user_appointments' %}">Мои текущие записи</a>
+        <a class="btn btn-success my-6" href="{% url 'main:appointments_archive' %}">Архив прошедших записей</a>
+    </div>
+    <div class="card mb-4 box-shadow">
+    </div>
+
+    <div class="row">
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                {% for object in object_list %}
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h3 class="my-0 font-weight-normal">{{ object.diagnostic.title}}</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <h4>Стоимость: {{ object.diagnostic.price}} руб.</h4>
+                            <h4>Врач: {{ object.doctor }}</h4>
+                            <h4>Дата и время: {{ object.date }}</h4>
+                            {% if object.user %}
+                            <h4>Пациент: {{ object.user }}</h4>
+                            {% endif %}
+                        </ul>
+                        {% if not user.is_staff %}
+                        <button class="btn btn-lg btn-block btn-primary" type="submit"
+                                formaction="{% url 'main:appointments_add' object.pk %}">Записаться на приём
+                        </button>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+</div>
+{% else %}
+<h3>Просмотр записей на приём к врачу доступен только авторизованным пользователям</h3>
+<h4>Пожалуйста, авторизуйтесь!</h4>
+{% endif %}
+
+{% endblock %}
